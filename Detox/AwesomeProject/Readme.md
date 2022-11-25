@@ -5,6 +5,8 @@
 ### step 1 environment-setup react-native
 https://reactnative.dev/docs/next/environment-setup
 
+do not forget to run: `pod install` in the `/ios` directory
+
 ### step 2 getting startted with Detox testing
 https://wix.github.io/Detox/docs/introduction/getting-started/
 
