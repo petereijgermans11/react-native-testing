@@ -1,0 +1,54 @@
+{
+  "name": "TestForE2E",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint .",
+    "start:appium": "appium",
+    "test:e2e": "jest --testMatch=\"**/__tests__/**/*E2E.test.js\"",
+    "test:e2e:all": "yarn test:e2e:android && yarn test:e2e:ios",
+    "test:e2e:android": "E2E_DEVICE=\"android\" yarn test:e2e",
+    "test:e2e:ios": "E2E_DEVICE=\"ios\" yarn test:e2e"
+  },
+  "dependencies": {
+    "react": "18.0.0",
+    "react-native": "0.69.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/runtime": "^7.12.5",
+    "@react-native-community/eslint-config": "^2.0.0",
+    "appium": "^1.22.3",
+    "babel-jest": "^26.6.3",
+    "eslint": "^7.32.0",
+    "jest": "^26.6.3",
+    "webdriverio": "^7.21.0",
+    "metro-react-native-babel-preset": "^0.70.3",
+    "react-test-renderer": "18.0.0"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "e2e": {
+    "platform": {
+      "ios": {
+        "platformName": "iOS",
+        "platformVersion": "15.5",
+        "deviceName": "iPhone 13",
+        "bundleId": "org.reactjs.native.example.TestForE2E",
+        "automationName": "XCUITest"
+      },
+      "android": {
+        "platformName": "Android",
+        "platformVersion": "12",
+        "deviceName": "Android Emulator",
+        "app": "./android/app/build/outputs/apk/debug/app-debug.apk",
+        "automationName": "UiAutomator2"
+      }
+    }
+  }
+}
