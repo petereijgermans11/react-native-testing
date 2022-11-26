@@ -16,9 +16,15 @@ _It's a bit janky but it serves the purpose of showcasing how to a basic setup n
 
 First you can get the repo locally via the classic `git clone git@github.com:kelset/react-native-e2e-jest-appium-webdriverio.git` command (I prefer SSH over HTTP for cloning, but you do you).
 
-Make sure that your setup works with Appium. You can follow their [getting started guide](http://appium.io/docs/en/about-appium/getting-started/) for that. Create a `Carthage` file in the `/ios/TestForE2E.xcodeproj` directory and copy/paste this dependency into this file: `github "ReactiveCocoa/ReactiveCocoa"`
+Make sure that your setup works with Appium. You can follow their [getting started guide](http://appium.io/docs/en/about-appium/getting-started/) for that. Steps to take according this guide:
+- run npm install -g appium
+- Install The XCUITest Driver for iOS or The Espresso Driver for Android
+- Verifying the Installation with `appium doctor`
+- The appium doctor complains that you have to create the `Carthage` file for iOS.
+- For iOS: Create an empty `Carthage` file in the `/ios/TestForE2E.xcodeproj` directory and copy/paste this dependency into this file: `github "ReactiveCocoa/ReactiveCocoa"`
+see for more steps: `https://unicorn-utterances.com/posts/using-carthage-with-react-native`
 
-You want to make sure, in particular, to have it installed locally via `npm install -g appium`, and that both `npx appium-doctor --android` and `npx appium-doctor --ios` give you a ✅
+You want to make sure, in particular, to have Appium installed locally via `npm install -g appium`, and that both `npx appium-doctor --android` and `npx appium-doctor --ios` give you a ✅
 
 Then you can navigate right into the codebase via `cd react-native-e2e-jest-appium-webdriverio`, followed by a `yarn install` command to install all the necessary dependencies.
 
