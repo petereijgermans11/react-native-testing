@@ -18,9 +18,12 @@ First you can get the repo locally via the classic `git clone git@github.com:kel
 
 Make sure that your setup works with Appium. You can follow their [getting started guide](http://appium.io/docs/en/about-appium/getting-started/) for that. Steps to take according this guide:
 - run npm install -g appium
-- Install The XCUITest Driver for iOS or The Espresso Driver for Android
-- Verifying the Installation with `appium doctor`
-- The appium doctor complains that you have to create the `Carthage` file for iOS.
+- Install The XCUITest Driver for iOS or The UiAutomator2 Driver for Android
+- Verifying the Installation with `appium doctor--ios` OR `appium doctor--android`
+- For Android: solve all issues!
+- For Android -> create an APK build: go to directory /android and run: ./gradlew assembleDebug
+- For iOS: solve all issues!
+- For iOS: The appium doctor complains that you have to create the `Carthage` file for iOS.
 - For iOS: Create an empty `Carthage` file in the `/ios/TestForE2E.xcodeproj` directory and copy/paste this dependency into this file: `github "ReactiveCocoa/ReactiveCocoa"`
 see for more steps: `https://unicorn-utterances.com/posts/using-carthage-with-react-native`
 

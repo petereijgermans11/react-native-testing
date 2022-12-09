@@ -4,7 +4,7 @@ import platformConfig from '../e2e-config';
 describe('Appium with Jest automation testing', () => {
   let client;
 
-  beforeEach(async function () {
+  beforeAll(async function () {
     const config = {
       path: '/wd/hub',
       port: 4723,
@@ -12,9 +12,23 @@ describe('Appium with Jest automation testing', () => {
         ...platformConfig,
       },
     };
+
     client = await wdio.remote(config);
 
-    // login screen test
+
+  });
+
+  afterAll(async function () {
+    await client.pause(1500);
+    console.info('[afterAll] Done with testing!');
+
+    await client.deleteSession();
+  });
+
+  test('login test', async function () {
+    // const loginStatusText = await client.$('~login-status');
+    // let loginStatusTextValue = await loginStatusText.getText();
+    // expect(loginStatusTextValue).toBe('fail');
 
     const UsernameTextInput = await client.$('~username-textinput');
     await UsernameTextInput.setValue('Morgan Freeman');
@@ -29,24 +43,7 @@ describe('Appium with Jest automation testing', () => {
     const loginButton = await client.$('~login-button');
     await loginButton.click();
 
-  });
 
-  afterEach(async function () {
-    await client.pause(1500);
-    console.info('[afterAll] Done with testing!');
-
-    await client.deleteSession();
-  });
-
-
-  // it('login screen test', async function () {
-  //   // const loginStatusText = await client.$('~login-status');
-  //   // let loginStatusTextValue = await loginStatusText.getText();
-  //   // expect(loginStatusTextValue).toBe('fail');
-  // });
-
-
-  test('form screen test', async function () {
 
     // test switch
     const switchText = await client.$('~switch-text');
@@ -58,27 +55,14 @@ describe('Appium with Jest automation testing', () => {
 
     switchTextValue = await switchText.getText();
     expect(switchTextValue).toBe('Click to turn the switch OFF');
-  });
 
-  test('navigate to general info ', async function () {
+
+    // navigate to general info
     const generalInfoButton = await client.$('~general-info-button');
     await generalInfoButton.click();
 
-    //only for Android. Press back two times because first keyboard gets closed.
-    // await client.pressKeyCode(4);
-    // await client.pressKeyCode(4);
+    expect(switchTextValue).toBe('Click to turn the switch OFF');
 
-    //only for iOS. Press back
-    await client.touchPerform([
-      { action: 'press', options: { x: 21, y: 72 } },
-      { action: 'wait', options: { ms: 1000 } },
-      { action: 'release' },
-    ]);
-  });
-
-  test('general screen test', async function () {
-    const generalInfoButton = await client.$('~general-info-button');
-    await generalInfoButton.click();
 
     // test swiping left and right on iOS 
     const slide = await client.$('~slides');
@@ -99,20 +83,21 @@ describe('Appium with Jest automation testing', () => {
     // following line works only on iOS.
     // slide.execute('mobile: swipe', { direction: 'left' });
     // slide.execute('mobile: swipe', { direction: 'right' });
+    
+    
 
-
-
-    ///// E2E testing swiping on Android does not work !!!
+    ///// E2E testing swiping on Android is not possible !!!
 
 
     // following line works only on iOS.
     // test scrolling down screen on iOS
-    const scrollarea = await client.$('~scrollarea');
-    await scrollarea.execute('mobile: scroll', { direction: 'down' });
+    const scrollview = await client.$('~scrollarea');
+    await scrollview.execute('mobile: scroll', { direction: 'down' });
+
 
     // test scrolling down screen on Android
-    await scrollarea.touchPerform([
-      { action: 'longPress', options: { x: 459, y: 1296 } },
+    await scrollview.touchPerform([
+      { action: 'press', options: { x: 459, y: 1296 } },
       { action: 'wait', options: { ms: 1000 } },
       { action: 'moveTo', options: { x: 459, y: -200 } },
       { action: 'release' }
@@ -122,6 +107,11 @@ describe('Appium with Jest automation testing', () => {
     let endScreenTextValue = await endScreen.getText();
     expect(endScreenTextValue).toBe('End of screen')
 
+
+
+
   });
 
 });
+
+
