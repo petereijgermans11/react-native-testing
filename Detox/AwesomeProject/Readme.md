@@ -16,8 +16,8 @@ Folllow tutorial for swiping: https://blog.logrocket.com/react-native-end-to-end
 ### step 4 final test example
 see for final test: https://github.com/petereijgermans11
 
-### Tip Detox:
+### Quick steps to startup testing with Detox:
 1. After every change run a Detox build:   `detox build --configuration ios.sim.debug`
-2. run Metro with:    `yarn start`
+2. run `Metro` with:    `yarn start`
 3. run tests with:    `detox test --configuration ios.sim.debug`
 
