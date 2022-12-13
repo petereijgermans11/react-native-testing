@@ -61,6 +61,7 @@ export const FormScreen = ({ navigation, route }) => {
             { label: "C", value: "C" },
           ]}
           style={pickerSelectStyles}
+          {...testProps('picker-select')}
         />
       </View>
 

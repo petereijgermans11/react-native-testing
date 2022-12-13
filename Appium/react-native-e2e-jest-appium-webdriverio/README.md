@@ -57,6 +57,15 @@ This way we can interact with all the elements on screen that have their string 
 
 If this isn't clear enough or you'd like a blogpost on this subject, feel free to [open an issue](https://github.com/kelset/react-native-e2e-jest-appium-webdriverio/issues/new) or talk to me [over on Twitter](https://twitter.com/kelset).
 
+### Quick steps to startup testing with APPIUM :
+0. start Appium with command:  `appium`
+1. After every change in the code run a build:   `yarn android`  or  `yarn ios`
+(for a clean build:  `yarn clean:android` or `yarn clean:ios` + go to the `/ios` directory and install the pods: `pod install`)
+2. run `Metro` with:    `yarn start`
+3. run tests with:    `yarn test:e2e:android`  or   `yarn test:e2e:ios`
+
+
+
 ## Inspiration and resources
 
 Getting this together was quite a bit of work because there aren't many resources around that walk you through the entire setup for React Native Android/iOS - I pieced this sample app together by following and taking bit and pieces from multiple places. In no particular order:

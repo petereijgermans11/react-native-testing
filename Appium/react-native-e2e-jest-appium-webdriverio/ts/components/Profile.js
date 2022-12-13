@@ -36,7 +36,7 @@ export const ProfileScreen = ({ navigation, route }) => {
     <Fragment>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
-        <ScrollView testID={'form'}
+        <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
           <Header />
@@ -77,7 +77,7 @@ export const ProfileScreen = ({ navigation, route }) => {
                 </TextInput>
               </Slide>
             </SwipeableViews>
-            <LearnMoreLinks />
+            <LearnMoreLinks {...testProps('scrollviewarea')} />
           </View>
           <Text {...testProps('endscreen')} >
             End of screen

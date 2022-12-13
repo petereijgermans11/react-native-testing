@@ -1,5 +1,5 @@
 Feature: Initial Cucumber Test
-  Try cucumber with detox
+  Try cucumber
 
 Scenario: Test Cucumber
   Given I should see the "welcome" element

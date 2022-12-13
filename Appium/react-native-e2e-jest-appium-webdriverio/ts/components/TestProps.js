@@ -1,3 +1,7 @@
+import {
+  Platform
+} from 'react-native';
+
 export const testProps = (testID: string) => {
 
     if (Platform.OS === 'ios') {

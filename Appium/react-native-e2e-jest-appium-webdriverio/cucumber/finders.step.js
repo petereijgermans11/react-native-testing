@@ -1,9 +1,8 @@
-import { Then, Given } from '@cucumber/cucumber';
-import { expect, element, by, waitFor } from 'appium';
+import platformConfig from '../e2e-config';
+
+import { Then, Given, Before } from '@cucumber/cucumber';
 
 Given('I should see the {string} element', async (elementId) => {
-  await expect(element(by.id(elementId))).toBeVisible();
+  await platformConfig.expect(element(by.id(elementId))).toBeVisible();
 });
-Then('I should see the {string} text', async (text) => {
-  await expect(element(by.text(text))).toBeVisible();
-});
+
